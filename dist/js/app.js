@@ -15,21 +15,7 @@ function computerPlay() {
 
 function playerPlay() {
     let playerInput = prompt("Rock, paper or scissors?");
-    if (playerInput == null) {
-        return console.log("Wrong input")
-    } else {
-        playerInput.toLowerCase();
-    }
-    // if (playerInput == "rock") {
-    //     playerResult = 3;
-    // } else if (playerInput == "paper") {
-    //     playerResult = 2;
-    // } else if (playerInput == "scissors") {
-    //     playerResult = 1;
-    // } else {
-    //     console.log("Wrong input")
-    // }
-    return playerInput;
+    return playerInput.toLowerCase();
 }
 
 function gameRound(playerSelection, computerSelection) {
@@ -73,11 +59,23 @@ function gameRound(playerSelection, computerSelection) {
     }
     return gameResult;
 }
-console.log(gameRound(playerPlay(), computerPlay()));
+// console.log(gameRound(playerPlay(), computerPlay()));
 
 function game() {
     let score = 0;
     for (let i = 0; i < 3; i++) {
-        gameRound(playerPlay, computerPlay);
+        score += gameRound(playerPlay(), computerPlay());
+        console.log("-----------------------");
     }
+    if (score < 0) {
+        console.log("You lost to a computer HA-HA");
+    }
+    if (score > 0) {
+        console.log("Wow! You beat a computer");
+    }
+    if (score === 0) {
+        console.log("Fight was equal");
+    }
+    return score;
 }
+console.log(game());
